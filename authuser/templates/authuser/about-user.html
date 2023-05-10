@@ -1,0 +1,35 @@
+{% extends 'authuser/base.html'%}
+
+{% block title %}
+    PK аккаунта - {{ user.pk }}
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Персональный аккаунт- {{ user.username }}</h1>
+    </div>
+    <div>
+        <div><h2>Имя - {{ user.first_name }}</h2></div>
+        <div><h2>Фамилия - {{ user.last_name }}</h2></div>
+        <div><h3>Дата регистрации {{ user.userprofile.date_joined }}</h3></div>
+    </div>
+    <div>
+        <p>
+            Список всех зарегистрированных пользователей: <a href="{% url 'account:all-people' %}">Перейти</a>
+        </p><br>
+        <p>
+            Списку друзей: <a href="{% url 'account:list-friends' %}">Перейти</a>
+        </p>
+        <p>
+            Список заявок в друзья: <a href="{% url 'account:list-incoming-request' %}">Перейти</a>
+        </p>
+        <p>
+            Список отправленных запросов: <a href="{% url 'account:list-send-request' %}">Перейти</a>
+        </p>
+        <p>
+            Отправить запрос в друзья: <a href="{% url 'account:send-request' %}">Перейти</a>
+        </p>
+
+    </div>
+
+{% endblock %}

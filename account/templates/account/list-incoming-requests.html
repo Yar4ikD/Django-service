@@ -1,0 +1,29 @@
+{% extends 'account/base.html'%}
+
+{% block title %}
+    Список заявок в друзья
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Список заявок в друзя:</h1>
+    </div>
+    <div>
+       <ul>
+        {% for req in requests %}
+            <li>
+                <p>Никнейм - {{ req.friend_name }}</p>
+                <p>ID - {{ req.friend_id }}</p>
+                <p>
+                    <a href="{% url 'account:accept-request' pk=req.pk %}">Принять заявку</a>
+                </p>
+                <p>
+                    <a href="{% url 'account:delete-incoming-request' pk=req.pk %}">Отклонить заявку</a>
+                </p>
+            </li>
+
+        {% empty %}Список заявок пуст
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

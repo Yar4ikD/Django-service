@@ -1,0 +1,28 @@
+{% extends 'account/base.html'%}
+
+{% block title %}
+    Список друзей
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Список друзей:</h1>
+    </div>
+    <div>
+        <ul>
+        {% for friend in friends %}
+            <li>
+                <p>Никнейм - {{ friend.friend_name }}</p>
+                <p>ID - {{ friend.friend_id }}</p>
+                <p>{{ friend.user }}</p>
+                <p>
+                    Удалить из друзей: <a href="{% url 'account:delete-friend' pk=friend.pk %}">Перейти</a>
+                </p>
+            </li>
+
+        {% empty %} На данный момент у тебя нет друзей
+        {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

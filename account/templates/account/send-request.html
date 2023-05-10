@@ -1,0 +1,25 @@
+{% extends 'account/base.html'%}
+
+{% block title %}
+    Отправка запроса в друзья
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Отправка заявки в друзя</h1>
+    </div>
+
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    <div>
+        <p>
+            Список всех зарегистрированных пользователей: <a href="{% url 'account:all-people' %}">Перейти</a>
+        </p>
+    </div>
+{% endblock %}

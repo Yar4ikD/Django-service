@@ -1,0 +1,25 @@
+{% extends 'account/base.html'%}
+
+{% block title %}
+    Список всех пользователей сети
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Список всех зарегистрированных пользователей</h1>
+    </div>
+    <div>
+       <ul>
+        {% for account in accounts %}
+            <li>
+                <p>Никнейм - {{ account.user.username }}</p>
+                <p>id - {{ account.pk }}</p>
+                <a href="{% url 'account:profile-detail' pk=account.id %}">Перейти на страницу пользователя</a>
+            </li>
+
+        {% empty %}Нет зарегистрированных пользователей
+
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'account/base.html'%}
+
+{% block title %}
+    Список отправленных запросов
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Список всех отправленных запросов в друзя:</h1>
+    </div>
+    <div>
+       <ul>
+        {% for req in requests %}
+            <li>
+                <p>Никнейм - {{ req.friend_name }}</p>
+                <p>ID - {{ req.friend_id }}</p>
+            </li>
+
+        {% empty %}Список отправленных запросов пуст
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
